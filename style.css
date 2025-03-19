@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+:root{
+    
+    --blanco: rgb(255, 255, 255) ;
+    --lila: rgb(215, 101, 243) ;
+    --celeste: rgb(112, 210, 248)  ;
+    --azul: rgb(107, 168, 238)  ;
+    --verde: rgb(187, 253, 222)  ;
+    --fuente:  "Oswald", sans-serif;
+}
+
+body{
+    background: linear-gradient(to bottom,var(--lila),var(--verde)) ;
+    height: 100vh;
+    font-family: ;
+  }
+  
+
+  .contenedor{
+    width: 400px;
+    margin:0 auto;
+    height: 600px; 
+  }
+
+  .perfil{
+    color: var(--blanco);
+
+  }
+
+  .span{
+    letter-spacing: 1px
+  }
+
+  .agregartareas{
+    background-color: var(--blanco);
+    height: 70px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    padding: 10px;
+    margin: 40px;
+  }
+
+  .agregartareas-input{
+    background-color: var(--blanco);
+    border: none;
+    height: 100%;
+    width: 100%;
+
+  }
+
+.icono-agregar{
+    font-size: 50px;
+    color: var(--lila);
+    
+}
+
+.icono-agregar:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+

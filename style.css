@@ -13,7 +13,7 @@
 body{
     background: linear-gradient(to bottom,var(--lila),var(--verde)) ;
     height: 100vh;
-    font-family: ;
+    font-family: var(--fuente);
   }
   
 

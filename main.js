@@ -28,3 +28,20 @@ mas.addEventListener('click', () => {
     input.value = "";
 })
 
+//llamar con enter
+
+document.addEventListener('keyup', (e) => {
+    if(e.key == 'Enter'){
+        const tarea = input.value 
+
+    if(tarea) {
+        agregarTareas(tarea)
+    }
+    input.value = "";
+    }
+})
+
+const cambiarEstilos = () => {
+    const link = document.getElementById("estilos"); 
+    link.href = link.href.includes("style.css") ? "style2.css" : "style.css";  
+}

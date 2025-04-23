@@ -66,3 +66,8 @@ body{
   color: var(--celeste);
   text-decoration: line-through;
 }
+
+li{
+  display: flex;
+  justify-content: space-between;
+}

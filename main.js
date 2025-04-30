@@ -6,7 +6,7 @@ const mas = document.getElementById("icono-agregar");
 
 const lista = document.getElementById("lista");
 
-const hecho = 'fas fa-circle';
+const hecho = 'fa-check-circle';
 
 const pendiente = 'fa-circle';
 

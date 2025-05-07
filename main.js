@@ -14,6 +14,8 @@ const tachado = 'tachado';
 
 let id= 0;
 
+let LIST = [];
+
 const fechaActual = new Date(); 
 fecha.innerHTML= fechaActual.toLocaleDateString('es-Ar',{
     weekday: 'long',
@@ -25,9 +27,9 @@ const agregarTareas = (tarea, check, eliminado, id) => {
     const estado = check ?hecho : pendiente;
     const tachar = check ?tachado : "";
 const elemento = `<li>
-                <i class="far ${estado}" id="check${id}" data="check"></i>
+                <i class="far ${estado}" id="${id}" data="check"></i>
                 <p class="tarea ${tachar}">${tarea}</p>
-                <i class="fas fa-trash de" id="borrar${id}" data="borrar"></i>
+                <i class="fas fa-trash de" id="${id}" data="borrar"></i>
                 
             </li>`
 
@@ -39,10 +41,15 @@ const tareaRealizada = (element) => {
 element.classList.toggle(hecho);
 element.classList.toggle(pendiente);
 element.parentNode.querySelector('.tarea').classList.toggle(tachado);
+
+LIST[element.id].check = !LIST[element.id].check;
 };
 
 const tareaEliminada = (element) => {
     element.parentNode.parentNode.removeChild(element.parentNode);
+
+    LIST[element.id].eliminado = true;
+    console.log(LIST[Element.id]);
 };
 
 
@@ -56,23 +63,47 @@ const cambiarEstilos = () => {
 //llamas función
 
 mas.addEventListener('click', () => {
-    const tarea = input.value 
+    const tarea = input.value;
+
+    if(tarea.length > 20) {
+    alert("la tarea no puede tener más de 20 caracteres")
+    return;
+}
 
     if(tarea) {
-        agregarTareas(tarea,false,false,id);
+        agregarTareas(tarea,false,false,id); 
+        LIST.push ({
+            tarea:tarea, 
+            check:false,
+            eliminado:false,
+            id:id
+     });
         id++
     }
     input.value = "";
+
+    console.log(LIST);
 })
 
 //llamar con enter
 
 document.addEventListener('keyup', (e) => {
     if(e.key == 'Enter'){
-        const tarea = input.value 
+        const tarea = input.value; 
+
+        if(tarea.length > 20) {
+            alert("la tarea no puede tener más de 20 caracteres")
+            return;
+        }
 
     if(tarea) {
         agregarTareas(tarea,false,false,id);
+        LIST.push ({
+            tarea:tarea, 
+            check:false,
+            eliminado:false,
+            id:id
+     });
         id++
     }
     input.value = "";
@@ -90,4 +121,6 @@ else if (elementData =='borrar') {
     tareaEliminada(element)
 }
 });
+
+
 

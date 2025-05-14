@@ -1,4 +1,4 @@
-const fecha = document.getElementById("fecha")
+const fecha = document.getElementById("fecha");
 
 const input = document.getElementById("agregartareas-input");
 
@@ -68,6 +68,9 @@ mas.addEventListener('click', () => {
     if(tarea.length > 20) {
     alert("la tarea no puede tener más de 20 caracteres")
     return;
+
+
+
 }
 
     if(tarea) {
@@ -78,6 +81,9 @@ mas.addEventListener('click', () => {
             eliminado:false,
             id:id
      });
+
+localStorage.setItem('GUARDADO',JSON.stringify(LIST))
+
         id++
     }
     input.value = "";
@@ -104,6 +110,9 @@ document.addEventListener('keyup', (e) => {
             eliminado:false,
             id:id
      });
+
+localStorage.setItem('GUARDADO',JSON.stringify(LIST))
+
         id++
     }
     input.value = "";
@@ -112,7 +121,7 @@ document.addEventListener('keyup', (e) => {
 
 lista.addEventListener('click', function(event) {
     const element = event.target;
-    const elementData = element.attributes.data.value;
+    const elementData = element.getAttribute("data");
 
 if (elementData == 'check') {
     tareaRealizada(element)
@@ -120,7 +129,28 @@ if (elementData == 'check') {
 else if (elementData =='borrar') {
     tareaEliminada(element)
 }
+
+localStorage.setItem('GUARDADO',JSON.stringify(LIST))
+
 });
 
+
+let data = localStorage.getItem('GUARDADO');
+if(data){
+    LIST = JSON.parse(data);
+    console.log(LIST);
+    id=LIST.length;
+    cargarLista(LIST);
+}else{
+    LIST = [];
+    id=0;
+}
+
+function cargarLista(array){
+    array.foreach(function(item){
+        agregarTareas(item.tarea,item.id,item.check,item.eliminado)
+    }
+)
+}
 
 
